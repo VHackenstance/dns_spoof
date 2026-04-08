@@ -14,3 +14,8 @@
             <p><b>sudo iptables -I INPUT -j NFQUEUE --queue-num 0</b></p>
     </li>
 </ol>
+<h4>Finally found active http site for testing:</h4>
+<p><b>http://testasp.vulnweb.com/</b></p>
+<p>Login:</p>
+<p>Username: <b>admin</b></p>
+<p>Password: <b>none</b></p>
