@@ -2,10 +2,13 @@
 
 import netfilterqueue
 from scapy.layers.inet import IP
+from scapy.layers.dns import DNSRR
 
 def process_packet(packet):
     scapy_packet= IP(packet.get_payload())
-    print(scapy_packet.show())
+    # Use the haslayer method to check for DNS Response in packet
+    if scapy_packet.haslayer(DNSRR):
+        print(scapy_packet.show())
     packet.accept()
 
 queue = netfilterqueue.NetfilterQueue()
