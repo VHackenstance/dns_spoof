@@ -1,7 +1,9 @@
 #!/usr/bin/env python
-
 import subprocess
 import sys
+
+# This is an idea to run our iptables from a script, rather than manually in the terminal
+# Just need more time to work around how to implement it, or even if it needs implementing
 
 # Define the iptables command
 # Create for the rule: iptables -I OUTPUT -j NFQUEUE --queue-num 0

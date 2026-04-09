@@ -37,9 +37,10 @@ def process_packet(packet):
 
             # Set the payload of the packet we sniffed "packet", to the
             # packet we have modified, "scapy_packet"
-            packet.set_payload(str(scapy_packet))
+            # using bytes here instead of string as per course.
+            packet.set_payload(bytes(scapy_packet))
 
-            print(scapy_packet.show())
+            # print(scapy_packet.show())
 
     # forward trapped packets to their destination
     packet.accept()
