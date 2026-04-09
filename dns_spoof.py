@@ -2,13 +2,17 @@
 
 import netfilterqueue
 from scapy.layers.inet import IP
-from scapy.layers.dns import DNSRR
+from scapy.layers.dns import DNSRR, DNSQR
 
 def process_packet(packet):
     scapy_packet= IP(packet.get_payload())
-    # Use the haslayer method to check for DNS Response in packet
     if scapy_packet.haslayer(DNSRR):
-        print(scapy_packet.show())
+        qname = scapy_packet[DNSQR].qname
+        qname_str = qname.decode('utf-8')
+        if "www.bing.com" in qname_str:
+            print("[+] Spoofing Target is in: " + qname_str )
+            # **** Here we can put our code to redirect the User somewhere else **** #
+
     packet.accept()
 
 queue = netfilterqueue.NetfilterQueue()
