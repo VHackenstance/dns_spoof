@@ -1,7 +1,18 @@
 <h3>DNS SPOOF</h3>
-<h4 style="color: red">Works locally in KL. Does not work with other VM</h4>
+<h4>Works locally in KL. Does not work with other VM</h4>
 <h4>Do not know why and spent 4 hours trying to resolve so moving on and will redress at some future date.</h4>
 <p>Note to self, packet returned shows IP Spoofed</p>
+<h4>Update...  Given modern security measures, this is only going to work locally</h4>
+<p>The issues, which I will address at a future date</p>
+<p>Key technical requirements for a functional attack against HTTPS include:</p>
+<ol>
+<li><b>Valid SSL Certificate</b>: A certificate signed by a trusted Certificate Authority (CA) or a self-signed certificate pre-installed in the victim's browser trust store. </li>
+<li><b>HSTS Bypass</b>: Intercepting the first HTTP request to prevent the browser from receiving the Strict-Transport-Security header, or exploiting time synchronization attacks to bypass HSTS expiration. </li>
+<li><b>Traffic Redirection</b>: Using tools like Ettercap (with plugins for HTTPS stripping) or DNSChef to route DNS requests to the attacker's IP.</li>
+</ol>
+
+
+<h4>Let's run through the basics again.</h4>
 <p>
 <b>DNS (Domain Name System):</b> Hierarchical, distributed service that translates human-readable domain names (like www.example.com) into machine-readable IP addresses (like 192.0.2.44) required to locate devices on the internet.
 </p>
