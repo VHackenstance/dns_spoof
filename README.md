@@ -1,14 +1,18 @@
 <h3>DNS SPOOF</h3>
-<h4>Works locally in KL. Does not work with other VM</h4>
-<h4>Do not know why and spent 4 hours trying to resolve so moving on and will redress at some future date.</h4>
-<p>Note to self, packet returned shows IP Spoofed</p>
-<h4>Update...  Given modern security measures, this is only going to work locally</h4>
-<p>The issues, which I will address at a future date</p>
-<p>Key technical requirements for a functional attack against HTTPS include:</p>
+<h4>Intercepting and Modifying Packets</h4>
+<h4>Scapy can be used to</p>
+<ul>
+<li>Create Packets</li>
+<li>Analyze Packets</li>
+<li>Send and Receive Packets</li>
+</ul>
+<h4>But it cannot be used to <b>Intercept</b> packets/flows</h4>
+<p>We setup our classic onPath with arp spoof.</p>
+<h4>We will only run http.  The issues with HTTPS are as follows:</h4>
 <ol>
-<li><b>Valid SSL Certificate</b>: A certificate signed by a trusted Certificate Authority (CA) or a self-signed certificate pre-installed in the victim's browser trust store. </li>
-<li><b>HSTS Bypass</b>: Intercepting the first HTTP request to prevent the browser from receiving the Strict-Transport-Security header, or exploiting time synchronization attacks to bypass HSTS expiration. </li>
-<li><b>Traffic Redirection</b>: Using tools like Ettercap (with plugins for HTTPS stripping) or DNSChef to route DNS requests to the attacker's IP.</li>
+<li><b>Valid SSL Certificate</b>:</li>
+<li><b>HSTS Bypass</b>: </li>
+<li><b>Traffic Redirection</b>: </li>
 </ol>
 
 
