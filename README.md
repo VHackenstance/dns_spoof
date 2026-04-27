@@ -15,17 +15,17 @@
 <li><b>Traffic Redirection</b>: </li>
 </ol>
 
-
 <h4>Let's run through the basics again.</h4>
 <p>
-<b>DNS (Domain Name System):</b> Hierarchical, distributed service that translates human-readable domain names (like www.example.com) into machine-readable IP addresses (like 192.0.2.44) required to locate devices on the internet.
-</p>
-<p>
-Often described as the <b>phonebook of the internet</b>, it has been an essential component of internet functionality since November 1983.
+<b>DNS (Domain Name System):</b> Hierarchical, distributed service that translates 
+human-readable domain names (like www.example.com) into machine-readable 
+IP addresses (like 192.0.2.44) required to locate devices on the internet.
+Often described as the <b>phonebook of the internet</b>, it has been an 
+essential component of internet functionality since November 1983.
 </p>
 <p>So, what ARP does for MAC and IP Addresses, DNS does for Domain Names and IP Addresses.</p>
 <p>
-<b>DNS spoofing:</b> Also known as DNS cache poisoning, is a cyberattack where an attacker corrupts a DNS resolver's cache with false data to redirect users from legitimate websites to fraudulent ones. 
+<b>DNS spoofing:</b> cyberattack where an attacker corrupts a DNS resolver's cache with false data to redirect users from legitimate websites to fraudulent ones. 
 </p>
 <p>
 This manipulation causes the name server to return an incorrect IP address, 
@@ -48,9 +48,31 @@ login credentials or financial details.
 </b></p>
     </li>
 </ol>
-<h4>Finally found active http site for testing:</h4>
-<p><b>http://testasp.vulnweb.com/</b></p>
-<p>Login Details: Username: <b>admin</b>.  Password: <b>none</b></p>
+<h4>Finally found active http sites for testing:</h4>
+These sites are ideal as they have a login, account creation, to practise capturing login credentials.
+<ul>
+    <li>
+        <b>http://testasp.vulnweb.com/</b>
+        <p>Login Details: Username: <b>admin</b>.  Password: <b>none</b></p>
+    </li>
+    <li>
+        <b>http://testasp.vulnweb.com/</b>
+        <p>Login Details: Username: <b>admin</b>.  Password: <b>none</b></p>
+    </li>
+    <li></li>
+</ul>
+<p></p>
+<h4>Testing a http only site with WebGoat</h4>
+    <p>I have created an early testing build file, to use this:</p>
+    <p>I installed without an issue using Docker, after installing Docker hehe.</p>
+    <p>https://owasp.org/www-project-webgoat/</p>
+    <p>Use port lo as this is a loop back.</p>
+    <p>Run WebGoat:</p>
+    <p>sudo docker run -p 8080:8080 webgoat/webgoat</p>
+    <p>Seems to be working so far.</p>
+<h4>Arp_spoof + Packet_sniffer</h4>
+<ol>
+
 <h4>Remove the IP Table Rules.</h4>
 <p>When we are done testing be sure to remove the ip table rules.</p>
 <p><b>iptables --flush</b></p>
