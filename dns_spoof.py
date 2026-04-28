@@ -6,7 +6,9 @@ from scapy.layers.dns import DNSRR, DNSQR, DNS, UDP
 target_ip_vm = " 192.168.63.174"
 target_interface_vm = "Ethernet0"
 
-def process_packet(packet):
+def process_packet():
     print("Process Packet.")
+
+process_packet()
 
 
