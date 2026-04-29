@@ -14,11 +14,11 @@ def set_pytables():
         number = options.number
         print("[+] We have a request to set the iptables to: " + number)
         if options.remote:
-            print("[+] We have a request to test to a remote target.")
+            print("[+] We have a request to test to a remote target using FORWARD.")
             subprocess.call(
                 ["sudo", "iptables", "-I", "FORWARD", "-j", "NFQUEUE", "--queue-num", number, "--queue-bypass"])
         else:
-            print("[+] We have a request to test locally.")
+            print("[+] We have a request to test locally using INPUT and OUTPUT.")
             subprocess.call(["sudo", "iptables", "-I", "INPUT", "-j", "NFQUEUE", "--queue-num", number, "--queue-bypass"])
             subprocess.call(["sudo", "iptables", "-I", "OUTPUT", "-j", "NFQUEUE", "--queue-num", number, "--queue-bypass"])
         print("[+] Check the iptables have been set:\n")

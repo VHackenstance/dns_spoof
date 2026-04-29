@@ -48,6 +48,18 @@ login credentials or financial details.
 </b></p>
     </li>
 </ol>
+<h4>Set the iptables using our script set_iptables.py</h4>
+<ol>
+<li>To test locally
+<p>sudo python utilities/set_iptables -s TRUE -n 0</p>
+</li>
+<li>To test against a remote location
+<p>sudo python utilities/set_iptables -r TRUE -n 0</p>
+</li>
+<li>To flush the iptables
+<p>sudo python utilities/set_iptables -f TRUE</p>
+</li>
+</ol>
 <h4>Finally found active http sites for testing:</h4>
 These sites are ideal as they have a login, account creation, to practise capturing login credentials.
 <ul>
