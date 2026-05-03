@@ -13,12 +13,16 @@ This file the index.html is accessible at <b>/var/www/html/</b>
 </p>
 <h4>Process:</h4>
     <h4>Remove the IP Table Rules.</h4>
-    <p>When we are done testing be sure to remove the ip table rules.</p>
     <p><b>iptables --flush</b></p>
-    <p>You can confirm the iptables flush by running: <b>sudo iptables -L -n</b></p>
-    <p>And there will be zero rules under the chains (headings)</p>
+    <p>Confirm iptables flushed: <b>sudo iptables -L -n</b></p>
     <h4>scapy.DNSRR</h4>
-    <p>Look for the <b>qd</b>DNS Question Recorder (QR).  Which should have one or more answers <b>an</b>: rdata field contains the IP.</p>
+    <p>Look for the <b>qd</b>DNS Question Recorder (QR). <br/> 
+We are interested in <b>qtype = A</b>, which assigns the Domain Name to the IP.
+Which should have one or more answers <b>an</b>: DNS Question Record.  
+<b>Type = A</b> <br/>
+We want to modify the field <b>rdata = [IP Address]</b> with our IP Address.
+</p>
+<p>So we want to check if the user is going to the target website.</p>
     <p>Run script: <b>sudo python dns_spoof.py</b> in one terminal window.</p>
     <p>Run ping: <b>ping -c 1 www.bing.com, </b>in another window.  You should get the following with your IP</p>
     ![ping_screen_shot.png](assets/ping_screen_shot.png)
