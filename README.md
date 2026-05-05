@@ -1,3 +1,6 @@
+<h3>UPDATE: Works but you have to be very specific with the DNS</h3>
+<p>Works with www.pentest-standard.org, not http://www.pentest-standard.org/index.php/Main_Page</p>
+<p>Works with </p>
 <h3>DNS SPOOF</h3>
 <h4>Intercepting and Modifying Packets</h4>
 <h4>Serve an IP to a target when they request another specific target</h4>
@@ -6,7 +9,8 @@
 
 <h3>Setup testing on our local computer.</h3>
 <h4>Start the local web server</h4>
-<p><b>sudo systemctl start apache2</b>: Then enter your IP into the browser.
+<p><b>sudo systemctl start apache2</b>: 
+Then enter your IP into the browser.
 <br />
 This file the index.html is accessible at <b>/var/www/html/</b>
 

