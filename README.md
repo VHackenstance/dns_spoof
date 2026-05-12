@@ -119,4 +119,11 @@ tricking users into visiting fake sites that often mimic the
 original destination to steal sensitive information like 
 login credentials or financial details.
 </p>
+<h3>ISSUES:</h3>
+<p>If you get an error message similar to:<br/>
+File "netfilterqueue/_impl.pyx", line 282, in netfilterqueue._impl.NetfilterQueue.bind
+OSError: Failed to create queue 0.
+</p>
+<p>$:  ps aux | grep python  </p>
+<p></p>
 
