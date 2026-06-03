@@ -1,13 +1,16 @@
-
+<h3>All scripts are tested and written in and for Linux</h3>
 <h3>DNS SPOOF</h3>
 <h4>Intercepting and Modifying Packets</h4>
 <h4>Serve an IP to a target when they request another specific target</h4>
-<p>1. Run arp_spoof.</p>
+<p>1. Run arp_spoof for remote testing only.</p>
 <p>2. Check ping and webserver access between VMs</p>
-<p>3. The basic function is to intercept all the packets from the Target, and place them in our queue.
-But we are not forwarding any packets to the Target, so the Target
-will not have any internet connection.
-<b>Packet.accept() will allow the packets to reach the Target.</b>
+<p>3. Port forwarding must be enabled for remote testing.<br/>
+<b>echo 1 | sudo tee "/proc/sys/net/ipv4/ip_forward"</b>
+<br/>It does not matter for local testing</p>
+<p>3. Intercept packets from a Target, place them in our queue.
+If we do not forward packets to the Target, the Target
+will not have any internet connection. <br />
+<b>Packet.accept()</b> will allow the packets to reach the Target.
 </p>
 
 <h3>Setup testing on our local computer.</h3>
