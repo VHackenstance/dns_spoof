@@ -1,6 +1,7 @@
 #!/usr/bin/env python2
 # Rebuild
 import netfilterqueue
+import scapy.all as scapy
 
 target_ip_vm = "192.168.63.174"
 target_interface_vm = "Ethernet0"
@@ -11,7 +12,8 @@ target_DN = "www.pentest-standard.org"
 # 96.126.116.56
 
 def process_packet(packet):
-    print(packet)
+    scapy_packet = scapy.IP(packet.get_payload())
+    print(scapy_packet.show())
     # packet.drop()
     packet.accept()
 
