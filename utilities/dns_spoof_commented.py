@@ -46,6 +46,7 @@ def process_packet(packet):
     packet.accept()
 
 # Create an Instance "queue" of the netfilterqueue object
+# To interact with the queue number 0
 queue = netfilterqueue.NetfilterQueue()
 # Invoke a method .bind() on the Object Instance we created
 # Connect/bind the object to the queue "0".

@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 # Rebuild
+import netfilterqueue
 
 target_ip_vm = "192.168.63.174"
 target_interface_vm = "Ethernet0"
@@ -8,3 +9,12 @@ target_DN = "www.pentest-standard.org"
 # 44.238.29.244
 # pentest-standard.org
 # 96.126.116.56
+
+def process_packet(packet):
+    print(packet)
+    # packet.drop()
+    packet.accept()
+
+queue = netfilterqueue.NetfilterQueue()
+queue.bind(0, process_packet)
+queue.run()
